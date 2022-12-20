@@ -34,9 +34,6 @@ public static void main(String[] args) {
 		
 		boolean running = true;
 		
-		GAME:
-		while(running) {
-		
 		if(input.equals("1")) {
 			
 			System.out.println("\t-----------------------------------");
@@ -66,7 +63,7 @@ public static void main(String[] args) {
 			System.out.println("invalid command, please choose again");
 		}
 		
-		}
+		
 		
 		System.out.println("###########");
 		System.out.println("Game Over");
@@ -173,16 +170,19 @@ public static void main(String[] args) {
 
 		if(in.equals("1")) { 
 			
-			System.out.println("You continue on the fight!");
+			System.out.println("# You continue on the fight! #");
 			LevelOne();
+			return;
 		}
 		else if (in.equals("2")) { 
 			System.out.println("You have exitied the battlefield and climbed the mountain");
 			LevelTwo();
+			return;
 		}
 		else if (in.equals("3")) {
 			System.out.println("You have entered the temple");
 			LevelThree();
+			return;
 		}
 		
 		}
@@ -291,14 +291,17 @@ public static void main(String[] args) {
 			
 			System.out.println("\t\nYou continue fighting on the mountians");
 			LevelTwo();
+			return;
 		}
 		else if (in.equals("2")) { 
 			System.out.println("You have exitied the mountain and enetered the temple");
 			LevelThree();
+			return;
 		}
 		else if (in.equals("3")) {
 			System.out.println("You have entered the battlefield");
 			LevelOne();
+			return;
 		}
 		
 		}
@@ -307,113 +310,102 @@ public static void main(String[] args) {
 	
 	public static void LevelThree() {
 		
-		sorcerer sorcerers = new sorcerer();
-		raidriar user = new raidriar();
-		
 		Scanner scan = new Scanner(System.in);
 		Random rand = new Random();
 		
+		sorcerer sorcerers = new sorcerer();
+	    raidriar user = new raidriar();
+	    
+	    //
+		
+		System.out.println("\t\nThe " + sorcerers + " has appeared");
+		
 		boolean running = true;
 		
-		GAME2:
-			while(running) {
+		
+		while(running) {
+			
+		if(user.health < 1) {
+			System.out.println("you limp out the game");
+			break;
+			}
 				
-				System.out.println("---------------------------------------");
-				
-				System.out.println("\t# " + sorcerers + " has appeared! #\n");
-				
-				while(sorcerers.sorcererHealth > 0) {
-					System.out.println("\t Your HP " + user);
-					System.out.println("\t" + sorcerers + "'s HP: " + sorcerers.sorcererHealth);
-					System.out.println("\n\t What would you like to do?");
-					System.out.println("\t1. Attack");
-					System.out.println("\t2. Drink health potion");
-					System.out.println("\t3. Run");
-					
-					String user1 = scan.nextLine();
-					if(user1.equals("1")) {
-						int damageDealt2 = rand.nextInt(user.attackDamge);
-						int damageTaken2 = rand.nextInt(sorcerers.sorcererAttack); 
-						
-						sorcerers.sorcererHealth -= damageDealt2;
-						user.health -= damageTaken2;
-						
-						System.out.println("\t You strike the " + sorcerers + " for " + damageDealt2 + " damage.");
-						System.out.println("\t You receive " + damageTaken2 + " in retalliation.");
-						
-						if(user.health < 1) { 
-							System.out.println("\t> You have taken too much damage.");
-							break;
-						}
-						
-					}
-					else if(user.equals("2")) {
-						
-						if(user.numHealthPotions > 0) {
-							user.health += user.healthPotion;
-							user.numHealthPotions --;
-							System.out.println("\t> You drank a health potion and healed" + user.healthPotion + "." 
-											 + "\n\t> You now have " + user.health + "HP."
-											 + "\n\t> You have " + user.numHealthPotions + "left. \n");
-						}
-						
-						else { 
-							System.out.println("\t> You have no health potions left. Defeat enemies for a chanve to get one. ");
-						}
-						
-					}
-					else if(user.equals("3")) {
-						
-						System.out.println("\t You run away from the " + sorcerers + ".");
-						continue GAME2;
-						
-					}
-					else {
-						System.out.println("\t invalid conmmand");
-					}
-					
-				}
-				
-				
-				if(user.health < 1) {
-					System.out.println("you're dead");
-					break;
-				}
-				
-				System.out.println("---------------------------------------");
-				System.out.println(" # " + sorcerers + " was defeated! # ");
-				System.out.println(" # You have " + user.health + "HP left # ");
-				
-				
-				System.out.println("---------------------------------------");
-				System.out.println(" What would you  like to do?");
-				System.out.println("1. Continue fighting");
-				System.out.println("2. Enter the Temple - level 3");
-				
-				
-				
-				while (!user.equals("1") && !user.equals("2")) {
-					System.out.println("invalid command");
-					
+		while(sorcerers.sorcererHealth > 0) {
+		System.out.println("\nWhat would you like to do?");
+		System.out.println("1. Attack");
+		System.out.println("2. Drink health potion");
+		System.out.println("3. Run");
+		
+		String input = scan.nextLine();
+		
+		if(input.equals("1")) {
+			
+			int damageDealt = rand.nextInt(user.attackDamge);
+			int damageTaken = rand.nextInt(sorcerers.sorcererHealth); 
+			
+			user.health -= damageTaken;
+			sorcerers.sorcererHealth -= damageDealt;
+			
+			System.out.println("You have dealt " + damageDealt + " damage to the " + sorcerers);
+			System.out.println("You receive " + damageTaken + " in exchange");
 
-				if(user.equals("1")) { 
-					
-					System.out.println("You continue on the fight");
-				}
-				else if (user.equals("2")) { 
-					
-					
-					
-					
-				}
+		}
+			
+			if(user.health < 1) {
+				System.out.println("\nYou have taken too much damage");
+				break;
+			} 
+			
+		else if(input.equals("2")) {
+			
+			if(user.numHealthPotions > 0) {
 				
+				user.health += user.healthPotion;
+				user.numHealthPotions --; 
+				
+				}
+		
+			System.out.println("Your new health is " + user.health + "HP");
+			
+			if(user.numHealthPotions < 1) { 
+				System.out.println("You are out of health potions. Kill more enemies on the battlefield to get more."); 
+			}
+			
 			}
 		
-			}
+		else if(input.equals("3")) {
+			
+			System.out.println("You live to fight another day");
+			break;
+			
+		}
+			
+		if(user.health < 1) {
+				System.out.println("you limp out the game");
+				break;
+				}
+			
+		}
 		
+		
+		
+		System.out.println("---------------------------------------");
+		System.out.println(" # " + sorcerers + " was defeated! # ");
+		System.out.println(" # You have " + user.health + "HP left # ");
+		
+		System.out.println(" # You won! #");
+		
+		return;
+		
+		
+		}
+		
+		
+		}
+	
 	}
 	
-}
+
 	
 
 
