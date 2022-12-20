@@ -6,5 +6,7 @@ public class sorcerer {
 	int sorcererMagic = 100;
 	int healthPotion = 40;
 	int numHealthPotions = 1;
+	int healthDropChance = 50; // percentage
+
 	
 }
