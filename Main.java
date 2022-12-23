@@ -79,9 +79,7 @@ public static void main(String[] args) {
 		enemies enemy = new enemies();
 		raidriar user = new raidriar();
 		
-		//
-		
-		System.out.println("\t\nA " + enemy + " has appeared!");
+		System.out.println("\t\nA " + enemy.save + " has appeared!");
 		
 		boolean running = true;
 		
@@ -103,7 +101,7 @@ public static void main(String[] args) {
 			user.health -= damageTaken;
 			enemy.maxEnemyHealth -= damageDealt;
 			
-			System.out.println("\t\nYou have dealt " + damageDealt + " damage to the " + enemy);
+			System.out.println("\t\nYou have dealt " + damageDealt + " damage to the " + enemy.save);
 			System.out.println("You receive " + damageTaken + " in exchange");
 
 		}
@@ -145,11 +143,11 @@ public static void main(String[] args) {
 		}
 		
 		System.out.println("---------------------------------------");
-		System.out.println(" # " + enemy + " was defeated! # ");
+		System.out.println(" # " + enemy.save + " was defeated! # ");
 		System.out.println(" # You have " + user.health + "HP left # ");
 		if(rand.nextInt(100) < user.healthDropChance) {
 			user.numHealthPotions++;
-			System.out.println(" # The " + enemy + " dropped a stim container # ");
+			System.out.println(" # The " + enemy.save + " dropped a stim container # ");
 			System.out.println(" # YOu have " + user.numHealthPotions + " stim containers # ");
 			
 		}
@@ -199,7 +197,7 @@ public static void main(String[] args) {
 	    
 	    //
 		
-		System.out.println("\t\nA " + demon + " has appeared");
+		System.out.println("\t\nA demon has appeared!");
 		
 		boolean running = true;
 		
@@ -222,7 +220,7 @@ public static void main(String[] args) {
 			user.health -= damageTaken;
 			demon.demonHealth -= damageDealt;
 			
-			System.out.println("You have dealt " + damageDealt + " damage to the " + demon);
+			System.out.println("You have dealt " + damageDealt + " damage to the demon");
 			System.out.println("You receive " + damageTaken + " in exchange");
 
 		}
@@ -264,11 +262,11 @@ public static void main(String[] args) {
 		}
 		
 		System.out.println("---------------------------------------");
-		System.out.println(" # " + demon + " was defeated! # ");
+		System.out.println(" # The demon was defeated! # ");
 		System.out.println(" # You have " + user.health + "HP left # ");
 		if(rand.nextInt(100) < user.healthDropChance) {
 			user.numHealthPotions++;
-			System.out.println(" # The " + demon + " dropped a stim container # ");
+			System.out.println(" # The demon dropped a stim container # ");
 			System.out.println(" # YOu have " + user.numHealthPotions + " stim containers # ");
 			
 		}
@@ -318,7 +316,7 @@ public static void main(String[] args) {
 	    
 	    //
 		
-		System.out.println("\t\nThe " + sorcerers + " has appeared");
+		System.out.println("\t\nThe sorcerer has appeared!");
 		
 		boolean running = true;
 		
@@ -346,7 +344,7 @@ public static void main(String[] args) {
 			user.health -= damageTaken;
 			sorcerers.sorcererHealth -= damageDealt;
 			
-			System.out.println("You have dealt " + damageDealt + " damage to the " + sorcerers);
+			System.out.println("You have dealt " + damageDealt + " damage to the sorcerer");
 			System.out.println("You receive " + damageTaken + " in exchange");
 
 		}
@@ -390,7 +388,7 @@ public static void main(String[] args) {
 		
 		
 		System.out.println("---------------------------------------");
-		System.out.println(" # " + sorcerers + " was defeated! # ");
+		System.out.println(" # The sorcerer was defeated # ");
 		System.out.println(" # You have " + user.health + "HP left # ");
 		
 		System.out.println(" # You won! #");

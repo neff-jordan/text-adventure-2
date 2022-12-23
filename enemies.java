@@ -8,9 +8,7 @@ public class enemies {
 	int maxEnemyHealth = 70;
 	int maxEnemyAttack = 25;
 	
-	public void enemyStats(String[] enemies) {
 	int enemyHealth = rand.nextInt(maxEnemyHealth);
-	String enemy = enemies[rand.nextInt(enemies.length)];
-	}
+	String save = enemies[rand.nextInt(enemies.length)];
 	
 }
